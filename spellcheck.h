@@ -43,12 +43,16 @@ vector<string> incorrectLetter(HashTable & ht, string word)
 					while (altLetter <= 'z') {
 						if (word[pos] != altLetter) {
 							temp[pos] = altLetter;
-							result.push_back(temp);
+							checkList.push_back(temp);
 						}
 						altLetter++;
 					}
 				}
 			}
+		}
+		for (int i=0; i<9; i++) {
+			if (ht.find(checkList[i])) result.push_back(checkList[i]);
+			cout << i+1 << ". " << checkList[i] << endl;
 		}
 	} else {
 		result.push_back(word);
