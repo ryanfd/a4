@@ -64,13 +64,12 @@ void HashTable::insert(string s)
 			h1 = h1+h2;
 			if (h1 >= capacity) h1 = h1-capacity; // wrap around
 		}
-		
 	    // add string to spot
 		arr[h1] = s; // INFINTE LOOP
 		currentNumItems++;
 	}
 	
-	cout << loadFactor() << endl;
+	// cout << loadFactor() << endl;
 
 	// increase table size if 2/3 full and copy
 	if (loadFactor() > 0.67f) { 
