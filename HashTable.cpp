@@ -64,7 +64,7 @@ void HashTable::insert(string s)
 	if (!find(s)) {
 		while (arr[h1] != "") { // find index
 			h1 = h1+h2;
-			if (h1 > capacity) h1 = h1-capacity; // wrap around
+			if (h1 >= capacity) h1 = h1-capacity; // wrap around
 			
 		}
 		
@@ -73,6 +73,7 @@ void HashTable::insert(string s)
 		arr[h1] = s; 
 		currentNumItems++;
 	}
+	cout << (float)size()/(float)maxSize() << endl;
 
 	// increase table size if 2/3 full and copy
 	if (loadFactor() > 0.67f) { 
@@ -104,7 +105,7 @@ bool HashTable::find(string s)
 		h1 = h1+h2; // increment
 		if (h1 >= capacity) h1 = h1-capacity; // wrap around
 		// full rotation
-		if (h1 = startVal) return false; // if this value is reached again, string was not found
+		if (h1 == startVal) return false; // if this value is reached again, string was not found
 	}
 	return false;
 }
