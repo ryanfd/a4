@@ -66,7 +66,7 @@ void HashTable::insert(string s)
 		}
 		
 	    // add string to spot
-		arr[h1] = s; 
+		arr[h1] = s; // INFINTE LOOP
 		currentNumItems++;
 	}
 	
@@ -98,7 +98,7 @@ bool HashTable::find(string s)
 	h2 = hashFunction2(s);
 	int startVal = h1;
 	while (arr[h1] != "") { // stop at first empty space
-		if (arr[h1] == s) return true;
+		if (arr[h1] == s) return true; // s found
 		h1 = h1+h2; // increment
 		if (h1 >= capacity) h1 = h1-capacity; // wrap around
 		// full rotation
