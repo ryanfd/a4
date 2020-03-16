@@ -32,6 +32,30 @@ vector<string> readFile(string infile)
 vector<string> incorrectLetter(HashTable & ht, string word)
 {
 	vector<string> result;
+	vector<string> checkList;
+
+	if (!ht.find(word)) {
+		string temp = word;
+		for (int pos=0; pos<word.length(); pos++) {
+			for (int i=0; i<word.length(); i++) {
+				if (i == pos) {
+					char altLetter = 'a';
+					for (int j=0; j<26; j++) {
+						if (temp[pos] != altLetter) {
+							temp[pos] = altLetter;
+							checkList.push_back(temp);
+						}
+						altLetter++;
+					}
+				}
+			}
+		}
+		for (int i=0; i<checkList.size(); i++) {
+			if (ht.find(checkList[i])) result.push_back(checkList[i]);
+		}
+	} else {
+		result.push_back(word);
+	}
 
 	return result;
 }
@@ -42,8 +66,8 @@ vector<string> missingSpace(HashTable & ht, string word)
 	vector<string> result;
 
 	if (!ht.find(word)) {
-		string temp;
 		for (int pos = 1; pos<word.length(); pos++) { // don't put space before or after word
+			string temp;
 			for (int j=0; j<word.length(); j++) {
 				if (j < pos) temp += word[j];
 				else if (j == pos) {
@@ -55,7 +79,6 @@ vector<string> missingSpace(HashTable & ht, string word)
 				}
 			}
 			if (ht.find(temp)) result.push_back(temp);
-			temp = ""; // reset string
 		}
 	} else {
 		result.push_back(word);

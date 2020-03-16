@@ -14,6 +14,7 @@ void testInsert();
 void testOneOff();
 void testTransition();
 void testMissing();
+void testIncorrect();
 vector<string> readFile(string infile);
 
 int main()
@@ -22,7 +23,8 @@ int main()
 	// testInsert();
 	// testOneOff();
 	// testTransition();
-	testMissing();
+	// testMissing();
+	testIncorrect();
 }
 
 int horner(const string & s) 
@@ -35,6 +37,24 @@ int horner(const string & s)
   
     return result; 
 } 
+
+void testIncorrect()
+{
+	HashTable h(10);
+	h.insert("shed");
+	h.insert("thee");
+	h.insert("them");
+	h.insert("they");
+	h.insert("thud");
+	h.insert("toed");
+	h.insert("scone");
+	h.print();
+
+	vector<string> list = missingSpace(h, "thed");
+	for (int i=0; i<list.size(); i++) {
+		cout << i+1 << ") " << list[i] << endl;
+	}
+}
 
 void testMissing()
 {
