@@ -44,8 +44,6 @@ HashTable::~HashTable()
 
 HashTable & HashTable::operator=(const HashTable & h)
 {
-	if (maxSize() > 0) arr->clear(); // empty old array
-
 	if (this != &h) { // don't copy self
 		delete[] arr;
 		capacity = h.capacity;
@@ -65,15 +63,14 @@ void HashTable::insert(string s)
 		while (arr[h1] != "") { // find index
 			h1 = h1+h2;
 			if (h1 >= capacity) h1 = h1-capacity; // wrap around
-			
 		}
 		
 	    // add string to spot
-		string str = s;
 		arr[h1] = s; 
 		currentNumItems++;
 	}
-	cout << (float)size()/(float)maxSize() << endl;
+	
+	cout << loadFactor() << endl;
 
 	// increase table size if 2/3 full and copy
 	if (loadFactor() > 0.67f) { 
@@ -139,14 +136,8 @@ int HashTable::findPrime(int n)
 // PRE: Only stores lowercase strings
 int HashTable::horner(const string & s) 
 { 
-    // int result = charConvert(s[0]);  // count from first char
-  
-    // // horner's method
-    // for (int i=1; i<s.length(); i++) 
-    //     result = result*32 + charConvert(s[i]); 
-
-
-    int result = s[s.length()-1];
+    int result = s[s.length()-1]; // work from last character to front
+    // horner's method
     for (int i=result-1; i>= 0; i--) {
     	result = result * 32 + charConvert(s[i]);
     }
@@ -175,7 +166,6 @@ int HashTable::hashFunction(const string & s)
 {
 	// define hash1 and hash2
 	int h1 = horner(s) % capacity;
-	// h2 = hashFunction2(s);
 
 	return h1;
 }

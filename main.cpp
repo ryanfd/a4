@@ -112,6 +112,8 @@ void initTest()
 
 	HashTable h4(7);
 	cout << h4.maxSize() << endl;
+	h4.insert("kale");
+	h2 = h4;
 }
 
 void testInsert()
@@ -122,6 +124,7 @@ void testInsert()
 	
 	for (int i=0; i<991; i++) {
 		// int index = rand() % list.size();
+		// cout << "[" << i+1 << "]" << endl;
 		h.insert(list[i]);
 	}
 
