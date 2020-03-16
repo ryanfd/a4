@@ -121,8 +121,8 @@ void testInsert()
 
 	
 	for (int i=0; i<991; i++) {
-		int index = rand() % list.size();
-		h.insert(list[index]);
+		// int index = rand() % list.size();
+		h.insert(list[i]);
 	}
 
 	h.print();

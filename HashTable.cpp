@@ -104,7 +104,7 @@ bool HashTable::find(string s)
 		h1 = h1+h2; // increment
 		if (h1 >= capacity) h1 = h1-capacity; // wrap around
 		// full rotation
-		if (h1 == startVal) return false; // if this value is reached again, string was not found
+		if (h1 = startVal) return false; // if this value is reached again, string was not found
 	}
 	return false;
 }

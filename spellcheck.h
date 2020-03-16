@@ -29,7 +29,7 @@ vector<string> readFile(string infile)
 	return result;
 }
 
-// one letter is different from word
+// one letter is different from
 vector<string> incorrectLetter(HashTable & ht, string word)
 {
 	vector<string> result;
