@@ -20,11 +20,11 @@ vector<string> readFile(string infile);
 int main()
 {
 	// initTest();
-	// testInsert();
+	testInsert();
 	// testOneOff();
 	// testTransition();
 	// testMissing();
-	testIncorrect();
+	// testIncorrect();
 }
 
 int horner(const string & s) 
@@ -40,7 +40,7 @@ int horner(const string & s)
 
 void testIncorrect()
 {
-	HashTable h(10);
+	HashTable h;
 	h.insert("shed");
 	h.insert("thee");
 	h.insert("them");
@@ -48,7 +48,7 @@ void testIncorrect()
 	h.insert("thud");
 	h.insert("toed");
 	h.insert("scone");
-	// h.print();
+	h.print();
 
 	vector<string> list = incorrectLetter(h, "thed");
 	for (int i=0; i<list.size(); i++) {
@@ -116,15 +116,14 @@ void initTest()
 
 void testInsert()
 {
-	HashTable h(1000);
-
 	vector<string> list = readFile("wordList1000.txt");
-	for (int i=0; i<900; i++) {
+	HashTable h(500);
+
+	
+	for (int i=0; i<991; i++) {
 		int index = rand() % list.size();
-		cout << list[index] << endl;
 		h.insert(list[index]);
 	}
-	// h.insert("level");
 
 	h.print();
 }

@@ -29,6 +29,7 @@ vector<string> readFile(string infile)
 	return result;
 }
 
+// one letter is different from word
 vector<string> incorrectLetter(HashTable & ht, string word)
 {
 	vector<string> result;
@@ -50,9 +51,9 @@ vector<string> incorrectLetter(HashTable & ht, string word)
 				}
 			}
 		}
-		for (int i=0; i<9; i++) {
+
+		for (int i=0; i<checkList.size(); i++) {
 			if (ht.find(checkList[i])) result.push_back(checkList[i]);
-			cout << i+1 << ". " << checkList[i] << endl;
 		}
 	} else {
 		result.push_back(word);
