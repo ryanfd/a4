@@ -35,24 +35,20 @@ vector<string> incorrectLetter(HashTable & ht, string word)
 	vector<string> checkList;
 
 	if (!ht.find(word)) {
-		string temp = word;
 		for (int pos=0; pos<word.length(); pos++) {
+			string temp = word;
 			for (int i=0; i<word.length(); i++) {
 				if (i == pos) {
 					char altLetter = 'a';
-					for (int j=0; j<26; j++) {
-						if (temp[pos] != altLetter) {
+					while (altLetter <= 'z') {
+						if (word[pos] != altLetter) {
 							temp[pos] = altLetter;
-							checkList.push_back(temp);
+							result.push_back(temp);
 						}
 						altLetter++;
 					}
 				}
 			}
-		}
-		for (int i=0; i<checkList.size(); i++) {
-			if (ht.find(checkList[i])) result.push_back(checkList[i]);
-			cout << checkList[i] << endl;
 		}
 	} else {
 		result.push_back(word);

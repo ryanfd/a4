@@ -48,9 +48,9 @@ void testIncorrect()
 	h.insert("thud");
 	h.insert("toed");
 	h.insert("scone");
-	h.print();
+	// h.print();
 
-	vector<string> list = missingSpace(h, "thed");
+	vector<string> list = incorrectLetter(h, "thed");
 	for (int i=0; i<list.size(); i++) {
 		cout << i+1 << ") " << list[i] << endl;
 	}
@@ -116,10 +116,10 @@ void initTest()
 
 void testInsert()
 {
-	HashTable h(3);
+	HashTable h(1000);
 
 	vector<string> list = readFile("wordList1000.txt");
-	for (int i=0; i<5; i++) {
+	for (int i=0; i<900; i++) {
 		int index = rand() % list.size();
 		cout << list[index] << endl;
 		h.insert(list[index]);

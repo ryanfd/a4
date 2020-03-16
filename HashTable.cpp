@@ -68,9 +68,9 @@ void HashTable::insert(string s)
 			
 		}
 		
-	// 	// add string to spot
+	    // add string to spot
 		string str = s;
-		arr[h1] = s; // TO DO: HERE IS THE SEGFAULT
+		arr[h1] = s; 
 		currentNumItems++;
 	}
 
