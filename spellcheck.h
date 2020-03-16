@@ -52,6 +52,7 @@ vector<string> incorrectLetter(HashTable & ht, string word)
 		}
 		for (int i=0; i<checkList.size(); i++) {
 			if (ht.find(checkList[i])) result.push_back(checkList[i]);
+			cout << checkList[i] << endl;
 		}
 	} else {
 		result.push_back(word);
